@@ -1,7 +1,7 @@
 on:
   push:
   pull_request:
-    types: [synchornize]
+    types: [synchornize, opened, edited]
 
 jobs:
   print_title_of_pr:
