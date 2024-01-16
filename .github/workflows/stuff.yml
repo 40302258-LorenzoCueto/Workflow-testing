@@ -10,3 +10,5 @@ jobs:
 
       - name: Print Title of PR
         run: echo The Title of your PR is ${{ github.event.pull_request }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
