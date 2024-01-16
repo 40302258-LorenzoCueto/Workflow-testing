@@ -5,8 +5,10 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
       - name: Random print
         run: echo RANDOM STUFF
