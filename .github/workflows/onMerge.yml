@@ -2,6 +2,7 @@ on:
   pull_request:
     types: [closed]
 
+
 jobs:
   print_title_of_pr:
     runs-on: ubuntu-20.04
