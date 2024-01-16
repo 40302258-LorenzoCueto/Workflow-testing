@@ -1,0 +1,13 @@
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  print_title_of_pr:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Dump GitHub context for merge
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
