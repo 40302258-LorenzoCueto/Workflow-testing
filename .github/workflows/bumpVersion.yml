@@ -17,13 +17,14 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
-      - name: "cat package.json"
-        run: cat ./package.json
-
       - name: "Setup Node.js"
         uses: "actions/setup-node@v1"
         with:
           node-version: 12
+
+      - name: Get PR labels
+        id: pr-labels
+        uses: joerick/pr-labels-action@v1.0.9
 
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
@@ -33,8 +34,16 @@ jobs:
           patch-wording: "patch"
           skip-tag: "true"
           target-branch: "master"
+          version-type: ${{steps.pr-labels.outputs.labels}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "cat package.json"
-        run: cat ./package.json
+  clean_up:
+    needs: bump_version
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: delete merged branch
+        uses: SvanBoxel/delete-merged-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
