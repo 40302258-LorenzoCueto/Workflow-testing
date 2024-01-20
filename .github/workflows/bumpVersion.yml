@@ -38,3 +38,6 @@ jobs:
 
       - name: "cat package.json"
         run: cat ./package.json
+
+      - name: "clean up"
+        run: pwd
