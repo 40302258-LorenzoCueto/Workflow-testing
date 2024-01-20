@@ -1,6 +1,6 @@
 on:
-  pull_request_review:
-    types: [submitted]
+  pull_request:
+    types: [closed]
 
 jobs:
   bump_version:
@@ -31,6 +31,7 @@ jobs:
           minor-wording: "minor"
           major-wording: "major"
           patch-wording: "patch"
+          target-branch: "master"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
