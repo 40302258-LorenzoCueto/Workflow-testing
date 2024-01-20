@@ -4,7 +4,7 @@ on:
     types: [opened]
 
 jobs:
-  print_title_of_pr:
+  dump_github:
     runs-on: ubuntu-20.04
 
     steps:
