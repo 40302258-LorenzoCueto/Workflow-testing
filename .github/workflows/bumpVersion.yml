@@ -29,9 +29,9 @@ jobs:
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
-          minor-wording: "minor"
-          major-wording: "major"
-          patch-wording: "patch"
+          minor-wording: " minor "
+          major-wording: " major "
+          patch-wording: " patch "
           skip-tag: "true"
           target-branch: "master"
           version-type: ${{steps.pr-labels.outputs.labels}}
