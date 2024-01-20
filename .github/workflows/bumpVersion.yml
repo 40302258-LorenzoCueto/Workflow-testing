@@ -17,9 +17,6 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
-      - name: "cat package.json"
-        run: cat ./package.json
-
       - name: "Setup Node.js"
         uses: "actions/setup-node@v1"
         with:
@@ -37,11 +34,16 @@ jobs:
           patch-wording: "patch"
           skip-tag: "true"
           target-branch: "master"
+          version-type: ${{steps.pr-labels.outputs.labels}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "cat package.json"
-        run: cat ./package.json
+  clean_up:
+    needs: bump_version
+    runs-on: ubuntu-latest
 
-      - name: "clean up"
-        run: pwd
+    steps:
+      - name: delete merged branch
+        uses: SvanBoxel/delete-merged-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
