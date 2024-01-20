@@ -1,7 +1,5 @@
 on:
-  push:
   pull_request:
-    types: [opened]
 
 jobs:
   dump_github:
@@ -15,7 +13,7 @@ jobs:
 
       - name: Get PR labels
         id: pr-labels
-        uses: joerick/pr-labels-action@v1.0.8
+        uses: joerick/pr-labels-action@v1.0.9
 
       - name: print label
         run: echo ${{steps.pr-labels.outputs}}
