@@ -25,6 +25,10 @@ jobs:
         with:
           node-version: 12
 
+      - name: Get PR labels
+        id: pr-labels
+        uses: joerick/pr-labels-action@v1.0.9
+
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:

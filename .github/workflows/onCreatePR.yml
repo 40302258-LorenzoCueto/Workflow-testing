@@ -16,4 +16,4 @@ jobs:
         uses: joerick/pr-labels-action@v1.0.9
 
       - name: print label
-        run: echo ${{steps.pr-labels.outputs.labels}}
+        run: echo ${{steps.pr-labels.outputs.labels}}[0]
