@@ -33,7 +33,6 @@ jobs:
           patch-wording: "patch"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PACKAGEJSON_DIR: "frontend"
 
       - name: "cat package.json"
         run: cat ./package.json
