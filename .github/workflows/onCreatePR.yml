@@ -23,7 +23,7 @@ jobs:
         run: echo ${{steps.savey.outputs.label}}
 
       - name: trim output
-        if: ${{steps.savey.outputs.label}} != ""
+        if: ${{steps.savey.outputs.label}} != null
         id: trimLabel
         run: |
           TRIM=$(echo "${{steps.savey.outputs.label}}" | sed 's/ //g')
