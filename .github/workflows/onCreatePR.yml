@@ -30,6 +30,8 @@ jobs:
           else
             echo "outcome=notEmpty" >> $GITHUB_OUTPUT
           fi
+      - name: print output
+        run: echo ${{steps.checkOutput.outputs.outcome}}
 
       - name: trim output
         if: ${{steps.checkOutput.outputs.outcome}} != "empty"
