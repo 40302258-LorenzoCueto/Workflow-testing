@@ -32,7 +32,7 @@ jobs:
           fi
 
       - name: trim output
-        if: ${{steps.checkOutput.outputs.label}} == "notEmpty"
+        if: ${{steps.checkOutput.outputs.outcome}} != "empty"
         id: trimLabel
         run: |
           TRIM=$(echo "${{steps.savey.outputs.label}}" | sed 's/ //g')
