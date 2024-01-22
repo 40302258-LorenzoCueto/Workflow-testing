@@ -17,7 +17,7 @@ jobs:
 
       - name: print label
         id: trimmy
-        run: echo "{label}={${{steps.pr-labels.outputs.labels}}} >> $GITHUB_OUTPUT"
+        run: echo "{label}={steps.pr-labels.outputs.labels} >> $GITHUB_OUTPUT"
 
       - name: print output
-        run: echo ${{steps.trimmy.outputs}}
+        run: echo ${{steps.trimmy.outputs.label}}
