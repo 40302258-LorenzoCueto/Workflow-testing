@@ -23,16 +23,16 @@ jobs:
         run: echo ${{steps.savey.outputs.label}}
 
       - name: Check if output is empty
+        id: checkOutput
         run: |
           if [ -z "${{ steps.savey.outputs.label }}" ]; then
-            echo "Output is empty"
-            # You can add additional commands here to handle the empty output scenario
+            echo "outcome=empty" >> $GITHUB_OUTPUT
           else
-            echo "Output is not empty"
+            echo "outcome=notEmpty" >> $GITHUB_OUTPUT
           fi
 
       - name: trim output
-        if: ${{steps.savey.outputs.label}} ==
+        if: ${{steps.checkOutput.outputs.label}} == "notEmpty"
         id: trimLabel
         run: |
           TRIM=$(echo "${{steps.savey.outputs.label}}" | sed 's/ //g')
