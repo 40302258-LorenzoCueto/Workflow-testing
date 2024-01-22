@@ -34,7 +34,7 @@ jobs:
         run: echo ${{steps.checkOutput.outputs.outcome}}
 
       - name: trim output
-        if: ${{steps.checkOutput.outputs.outcome}} != "empty"
+        if: ${{steps.checkOutput.outputs.outcome}} == " notEmpty "
         id: trimLabel
         run: |
           TRIM=$(echo "${{steps.savey.outputs.label}}" | sed 's/ //g')
