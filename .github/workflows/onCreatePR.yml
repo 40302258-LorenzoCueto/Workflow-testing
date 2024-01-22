@@ -23,4 +23,6 @@ jobs:
         run: echo ${{steps.savey.outputs.label}}
 
       - name: print output length
-        run: echo ${#"${{steps.savey.outputs.label}}"}
+        run: |
+          myVar = ${{steps.savey.outputs.label}}
+          echo ${#myVar}
