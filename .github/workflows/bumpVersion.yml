@@ -33,12 +33,21 @@ jobs:
       - name: print output
         run: echo ${{steps.savey.outputs.label}}
 
+      - name: trim output
+        id: trimLabel
+        run: |
+          TRIM=$(echo "${{steps.savey.outputs.label}}" | sed 's/ //g')
+          echo "trimmedLabel=$TRIM" >> $GITHUB_OUTPUT
+
+      - name: print output
+        run: echo ${{steps.trimLabel.outputs.trimmedLabel}}
+
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
           skip-tag: "true"
           target-branch: "master"
-          version-type: "major"
+          version-type: ${{steps.trimLabel.outputs.trimmedLabel}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
