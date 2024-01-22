@@ -32,7 +32,7 @@ jobs:
           echo "trimmedLabel=$TRIM" >> $GITHUB_OUTPUT
 
       - name: "Automated Version Bump"
-        if: github.event.pull_request.merged == true && ${{steps.saveLabel.outputs.label}} != ""
+        if: github.event.pull_request.merged == true
         uses: "phips28/gh-action-bump-version@master"
         with:
           skip-tag: "true"
