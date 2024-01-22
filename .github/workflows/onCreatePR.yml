@@ -15,9 +15,14 @@ jobs:
         id: pr-labels
         uses: joerick/pr-labels-action@v1.0.9
 
-      - name: print label
-        id: trimmy
+      - name: save label
+        id: savey
         run: echo "label=${{steps.pr-labels.outputs.labels}} >> $GITHUB_OUTPUT"
 
       - name: print output
-        run: echo ${{steps.trimmy.outputs.label}}
+        run: echo ${{steps.savey.outputs.label}}
+
+      - name: trim output
+        id: trimmed
+        run: |
+          echo ${{steps.savey.outputs.label}} | xargs echo "Trimmed value"
