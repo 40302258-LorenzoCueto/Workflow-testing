@@ -22,15 +22,23 @@ jobs:
         with:
           node-version: 12
 
+      - name: Get PR labels
+        id: pr-labels
+        uses: joerick/pr-labels-action@v1.0.9
+
+      - name: save label
+        id: savey
+        run: echo "label=${{steps.pr-labels.outputs.labels}}" >> $GITHUB_OUTPUT
+
+      - name: print output
+        run: echo ${{steps.savey.outputs.label}}
+
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
-          minor-wording: "minor"
-          major-wording: "major"
-          patch-wording: "patch"
           skip-tag: "true"
           target-branch: "master"
-          rc-wording: "RELEASE"
+          version-type: ${{steps.savey.outputs.label}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

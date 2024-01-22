@@ -27,6 +27,6 @@ jobs:
         with:
           skip-tag: "true"
           target-branch: "master"
-
+          version-type: ${{steps.savey.outputs.label}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
