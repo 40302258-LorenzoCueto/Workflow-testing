@@ -2,6 +2,8 @@
 
 ## Change type
 
+RELEASE
+
 major
 
 ## Description

@@ -22,10 +22,6 @@ jobs:
         with:
           node-version: 12
 
-      - name: Get PR labels
-        id: pr-labels
-        uses: joerick/pr-labels-action@v1.0.9
-
       - name: "Automated Version Bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
@@ -34,7 +30,7 @@ jobs:
           patch-wording: "patch"
           skip-tag: "true"
           target-branch: "master"
-          version-type: ${{steps.pr-labels.outputs.labels}}
+          rc-wording: "RELEASE"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
