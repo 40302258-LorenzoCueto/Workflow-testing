@@ -17,7 +17,7 @@ jobs:
 
       - name: save label
         id: savey
-        run: echo "label=${{steps.pr-labels.outputs.labels}}" >> $GITHUB_OUTPUT"
+        run: echo "label=${{steps.pr-labels.outputs.labels}}" >> $GITHUB_OUTPUT
 
       - name: print output
         run: echo ${{steps.savey.outputs.label}}
