@@ -25,7 +25,7 @@ jobs:
       - name: Check if output is empty
         id: checkOutput
         run: |
-          if [ -z "${{ steps.savey.outputs.label }}" ]; then
+          if [ -z "${{steps.savey.outputs.label}}" ]; then
             echo "empty="true"" >> $GITHUB_OUTPUT
           else
             echo "empty="false"" >> $GITHUB_OUTPUT
