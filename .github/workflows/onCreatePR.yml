@@ -22,5 +22,11 @@ jobs:
       - name: print output
         run: echo ${{steps.savey.outputs.label}}
 
-      - name: print output length
-        run: echo "${{steps.savey.outputs.label}}" | sed 's/ //g'
+      - name: trim output
+        id: trim-job
+        run: |
+          trim = $("${{steps.savey.outputs.label}}" | sed 's/ //g')
+          echo "{trimmedLabel}={trim}" >> $GITHUB_OUTPUT
+
+      - name: print output
+        run: echo ${{steps.trim-job.outputs.trimmedLabel}}
