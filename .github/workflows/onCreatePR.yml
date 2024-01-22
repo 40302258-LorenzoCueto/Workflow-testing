@@ -41,4 +41,5 @@ jobs:
           echo "trimmedLabel=$TRIM" >> $GITHUB_OUTPUT
 
       - name: print output
+        if: ${{steps.trimLabel.outputs.trimmedLabel}} != "disable-version-bump"
         run: echo ${{steps.trimLabel.outputs.trimmedLabel}}
