@@ -26,7 +26,7 @@ jobs:
         id: trim-job
         run: |
           TRIM=$(echo "${{steps.savey.outputs.label}}" | sed 's/ //g')
-          echo "{trimmedLabel}={TRIM}" >> $GITHUB_OUTPUT
+          echo "{trimmedLabel}={$TRIM}" >> $GITHUB_OUTPUT
 
       - name: print output
         run: echo ${{steps.trim-job.outputs.trimmedLabel}}
