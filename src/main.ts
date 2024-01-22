@@ -1,7 +1,7 @@
 import "./app.css";
 import App from "./App.svelte";
 
-console.log("Hello 223323ff46655555");
+console.log("Hello 223323ff4665555555");
 
 const app = new App({
   target: document.getElementById("app"),
