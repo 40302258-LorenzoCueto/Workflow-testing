@@ -4,7 +4,6 @@ on:
 
 jobs:
   bump_version:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-20.04
 
     steps:
@@ -33,6 +32,7 @@ jobs:
           echo "trimmedLabel=$TRIM" >> $GITHUB_OUTPUT
 
       - name: "Automated Version Bump"
+        if: github.event.pull_request.merged == true && ${{steps.saveLabel.outputs.label}} != ""
         uses: "phips28/gh-action-bump-version@master"
         with:
           skip-tag: "true"
