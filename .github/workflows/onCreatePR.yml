@@ -26,9 +26,9 @@ jobs:
         id: checkOutput
         run: |
           if [ -z "${{ steps.savey.outputs.label }}" ]; then
-            echo "empty=true" >> $GITHUB_OUTPUT
+            echo "empty='true'" >> $GITHUB_OUTPUT
           else
-            echo "empty=false" >> $GITHUB_OUTPUT
+            echo "empty='false'" >> $GITHUB_OUTPUT
           fi
       - name: print output
         run: echo ${{steps.checkOutput.outputs.outcome}}
