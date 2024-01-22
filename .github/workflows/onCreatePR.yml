@@ -23,4 +23,4 @@ jobs:
         run: echo ${{steps.savey.outputs.label}}
 
       - name: print output length
-        run: echo ${#${{steps.savey.outputs.label}}}
+        run: echo ${#"${{steps.savey.outputs.label}}"}
