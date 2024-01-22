@@ -16,4 +16,8 @@ jobs:
         uses: joerick/pr-labels-action@v1.0.9
 
       - name: print label
-        run: echo ${{steps.pr-labels.outputs.labels}}[0]
+        id: trimmy
+        run: echo "{label}={${{steps.pr-labels.outputs.labels}}} >> $GITHUB_OUTPUT"
+
+      - name: print output
+        run: echo ${{steps.trimmy.outputs}}
