@@ -32,3 +32,6 @@ jobs:
         run: |
           TRIM=$(echo "${{steps.saveLabel.outputs.label}}" | sed 's/ //g')
           echo "trimmedLabel=$TRIM" >> $GITHUB_OUTPUT
+
+      - name: print output
+        run: echo ${{steps.saveLabel.outputs.label}}
