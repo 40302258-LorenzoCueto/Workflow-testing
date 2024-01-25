@@ -22,23 +22,9 @@ jobs:
       - name: print output
         run: echo ${{steps.savey.outputs.label}}
 
-      - name: Check if output is empty
-        id: checkOutput
-        run: |
-          if [ -z "$${{steps.savey.outputs.label}}" ]; then
-            echo "empty=true" >> $GITHUB_OUTPUT
-          else
-            echo "empty=false" >> $GITHUB_OUTPUT
-          fi
-      - name: print output
-        run: echo ${{steps.checkOutput.outputs.outcome}}
-
       - name: trim output
-        if: ${{steps.checkOutput.outputs.empty}}
+        if: steps.savey.outputs.label != ''
         id: trimLabel
         run: |
           TRIM=$(echo "${{steps.savey.outputs.label}}" | sed 's/ //g')
           echo "trimmedLabel=$TRIM" >> $GITHUB_OUTPUT
-
-      - name: print output
-        run: echo ${{steps.trimLabel.outputs.trimmedLabel}}

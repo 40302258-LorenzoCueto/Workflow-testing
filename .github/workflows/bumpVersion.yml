@@ -33,7 +33,7 @@ jobs:
           echo "trimmedLabel=$TRIM" >> $GITHUB_OUTPUT
 
       - name: "Automated Version Bump"
-        if: ${{steps.trimLabel.outputs.trimmedLabel}} != " disable version bump"
+        if: steps.saveLabel.outputs.label != ''
         uses: "phips28/gh-action-bump-version@master"
         with:
           skip-tag: "true"
