@@ -38,6 +38,7 @@ jobs:
         with:
           skip-tag: "true"
           target-branch: "master"
+          PACKAGEJSON_DIR: "container"
           version-type: ${{steps.trimLabel.outputs.trimmedLabel}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
